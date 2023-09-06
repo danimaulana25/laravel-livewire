@@ -59,6 +59,17 @@ class StudentShow extends Component
         $this->dispatchBrowserEvent('close-modal');
     }
 
+    public function deleteStudent(int $studentId)
+    {
+        $this->studentId = $studentId;
+    }
+
+    public function destroyStudent()
+    {
+        Student::where('id', $this->studentId)->delete();
+        session()->flash('message', 'Student Deleted Successfully.');
+        $this->dispatchBrowserEvent('close-modal');
+    }
     public function closeModal()
     {
         $this->resetInputFields();

@@ -39,8 +39,9 @@
                                                 wire:click.prevent="editStudent({{ $student->id }})">
                                                 Edit
                                             </button>
-                                            <button type="button" class="btn btn-sm btn-danger"
-                                                wire:click.prevent="delete({{ $student->id }})">
+                                            <button type="button" class="btn btn-sm btn-danger" data-bs-toggle="modal"
+                                                data-bs-target="#DeleteStudentModal"
+                                                wire:click.prevent="deleteStudent({{ $student->id }})">
                                                 Delete
                                             </button>
                                         </td>
