@@ -21,6 +21,7 @@
                                 <tr>
                                     <th>No.</th>
                                     <th>Name</th>
+                                    <th>Email</th>
                                     <th>Course</th>
                                     <th>Action</th>
                                 </tr>
@@ -30,11 +31,12 @@
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
                                         <td>{{ $student->name }}</td>
+                                        <td>{{ $student->email }}</td>
                                         <td>{{ $student->course }}</td>
                                         <td>
                                             <button type="button" class="btn btn-sm btn-primary" data-bs-toggle="modal"
-                                                data-bs-target="#studentModal"
-                                                wire:click.prevent="edit({{ $student->id }})">
+                                                data-bs-target="#UpdateStudentModal"
+                                                wire:click.prevent="editStudent({{ $student->id }})">
                                                 Edit
                                             </button>
                                             <button type="button" class="btn btn-sm btn-danger"
