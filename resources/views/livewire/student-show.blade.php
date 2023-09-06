@@ -16,7 +16,45 @@
                         </h4>
                     </div>
                     <div class="card-body">
-                        table data
+                        <table class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th>No.</th>
+                                    <th>Name</th>
+                                    <th>Course</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @forelse ($students as $student)
+                                    <tr>
+                                        <td>{{ $loop->iteration }}</td>
+                                        <td>{{ $student->name }}</td>
+                                        <td>{{ $student->course }}</td>
+                                        <td>
+                                            <button type="button" class="btn btn-sm btn-primary" data-bs-toggle="modal"
+                                                data-bs-target="#studentModal"
+                                                wire:click.prevent="edit({{ $student->id }})">
+                                                Edit
+                                            </button>
+                                            <button type="button" class="btn btn-sm btn-danger"
+                                                wire:click.prevent="delete({{ $student->id }})">
+                                                Delete
+                                            </button>
+                                        </td>
+                                    </tr>
+
+                                @empty
+                                    <tr>
+                                        <td colspan="5">No Student Found.</td>
+                                    </tr>
+                                @endforelse
+                            </tbody>
+                        </table>
+
+                        <div>
+                            {{ $students->links() }}
+                        </div>
                     </div>
                 </div>
             </div>
